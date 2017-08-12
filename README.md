@@ -2,6 +2,12 @@
 
 最近一直在找时间重构代码，每一次重构都能带来许多好处，比如精简代码，提高代码质量，减轻团队之间的问题，当然最重要的就是以后可以偷懒啦。而这次改进也是为了节省时间，提高团队的效率。
 
+#### 先体验一下效果
+
+![](https://github.com/ditclear/DataBinding-AspectJ/blob/master/screenshot.gif?raw=true)
+
+
+
 #### DataBinding
 
 不了解的请百度，google或翻看以前的文章
@@ -9,7 +15,7 @@
 #### AspectJ
 
 贴一张图：
-![](https://user-gold-cdn.xitu.io/2017/5/13/92e2b2ecca18e2ce56406e6175e148f6)
+![](http://upload-images.jianshu.io/upload_images/3722695-37a95292f78dc566?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 简单理解就是在编译期和加载时进行代码注入。通俗点来说就是非侵入的在一段方法前后加入一点自己的逻辑。作用和OKhttp的Interceptor拦截请求有点像。
 
@@ -69,7 +75,6 @@ public @interface SingleClick {
 然后编写我们的Aspect类(代码来自north2016)
 
 ```java
-
 /**
  * Created by baixiaokang on 16/12/9.
  * {link https://github.com/north2016/T-MVP/blob/master/app/src/main/java/com/aop/SingleClickAspect.java}
@@ -133,15 +138,14 @@ public class SingleClickAspect {
 
 而且只有两次点击时间间隔在600ms以上才会执行方法，否则会被拦截。
 
-#### 最后体验一下效果
+### 最后
 
-
+DataBinding库解决了View和Data之间的绑定问题，再搭配上AspectJ真的是如虎添翼。而且二者的功能都远不止如此，AspectJ还能进行日志埋点，性能监控，动态权限申请等等，看你发挥。
 
 githud地址：https://github.com/ditclear/DataBinding-AspectJ
 
-参考资料：
+#### 参考资料：
 
 [专题：AndroidAOP](http://www.jianshu.com/nb/1529181)
 
 [看AspectJ在Android中的强势插入](http://www.jianshu.com/p/5c9f1e8894ec)
-
