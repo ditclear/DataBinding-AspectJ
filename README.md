@@ -4,8 +4,10 @@
 
 #### 先体验一下效果
 
-![](https://github.com/ditclear/DataBinding-AspectJ/blob/master/screenshot.gif?raw=true)
+![1.gif](https://github.com/ditclear/DataBinding-AspectJ/blob/master/screenshot.gif?raw=true)
 
+
+![2.gif](https://github.com/ditclear/DataBinding-AspectJ/blob/master/screenshot_list.gif?raw=true)
 
 
 #### DataBinding
