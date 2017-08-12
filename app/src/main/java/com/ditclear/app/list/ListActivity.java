@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 页面描述：
+ * 页面描述：列表页点击
  *
  * Created by ditclear on 2017/8/12.
  */
