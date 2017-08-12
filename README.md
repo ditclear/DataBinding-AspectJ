@@ -21,7 +21,7 @@
 
 简单理解就是在编译期和加载时进行代码注入。通俗点来说就是非侵入的在一段方法前后加入一点自己的逻辑。作用和OKhttp的Interceptor拦截请求有点像。
 
-最开始认识到AspectJ的时候是在今年二月份，在github搜索databinding的时候偶遇[**north2016/T-MVP**](north2016/**T-MVP**)，这个项目太赞了，给了我相当多的启发，也算是我android-AOP的启蒙。
+最开始认识到AspectJ的时候是在今年二月份，在github搜索databinding的时候偶遇[**north2016/T-MVP**](https://github.com/north2016/T-MVP)，这个项目太赞了，给了我相当多的启发，也算是我android-AOP的启蒙。
 
 
 
