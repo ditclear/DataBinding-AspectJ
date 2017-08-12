@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+                name="item"
+                type="com.ditclear.app.list.DummyItem"/>
+        <variable
+                name="presenter"
+                type="com.ditclear.app.list.ItemClickListener"/>
+    </data>
+
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:text="@{item.content}"
+            tools:text="item"
+            android:onClick="@{(v)->presenter.onItemClick(v,item)}">
+    </TextView>
+</layout>
