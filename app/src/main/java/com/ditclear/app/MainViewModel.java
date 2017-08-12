@@ -19,16 +19,25 @@ public class MainViewModel extends BaseObservable {
     public ObservableField<String > hookText=new ObservableField<>("");
 
 
+    /**
+     * 普通的点击事件
+     * @param view view
+     */
     public void onNormalClick(View view) {
 
-        normalText.set(normalText.get()+"click\n");
+        normalText.set(String.format("%s click\n",normalText.get()));
     }
 
+    /**
+     * 防止多次点击
+     * @param view view
+     */
     @SingleClick
     public void onHookClick(View view) {
-        hookText.set(hookText.get()+"click\n");
+        hookText.set(String.format("%s click\n",hookText.get()));
     }
 
+    //清空
     public void onClearClick(View view) {
 
         normalText.set("");
