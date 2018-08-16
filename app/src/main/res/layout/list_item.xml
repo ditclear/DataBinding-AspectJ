@@ -8,7 +8,7 @@
                 type="com.ditclear.app.list.DummyItem"/>
         <variable
                 name="presenter"
-                type="com.ditclear.app.list.ItemClickListener"/>
+                type="io.ditclear.bindingadapter.ItemClickPresenter"/>
     </data>
 
     <TextView

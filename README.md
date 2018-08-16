@@ -123,8 +123,63 @@ public class SingleClickAspect {
 
 接下来是使用
 
+先看看**MainActivity**
+
 ```java
-	/**
+public class MainActivity extends AppCompatActivity {
+
+    private ActivityMainBinding mBinding;
+
+    private MainViewModel mViewModel;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+        mViewModel = new MainViewModel();
+        mBinding.setVm(mViewModel);
+    }
+}
+```
+
+很简单，初始化binding，设置了viewModel
+
+**MainViewModel**
+
+
+
+```java
+package com.ditclear.app;
+
+import android.databinding.BaseObservable;
+import android.databinding.ObservableField;
+import android.view.View;
+
+import com.ditclear.app.aop.annotation.SingleClick;
+
+/**
+ * 页面描述：viewmodel
+ *
+ * Created by ditclear on 2017/8/12.
+ */
+
+public class MainViewModel extends BaseObservable {
+
+    public ObservableField<String > normalText=new ObservableField<>("");
+
+    public ObservableField<String > hookText=new ObservableField<>("");
+
+
+    /**
+     * 普通的点击事件
+     * @param view view
+     */
+    public void onNormalClick(View view) {
+
+        normalText.set(String.format("%s click\n",normalText.get()));
+    }
+
+    /**
      * 防止多次点击
      * @param view view
      */
@@ -132,6 +187,46 @@ public class SingleClickAspect {
     public void onHookClick(View view) {
         hookText.set(String.format("%s click\n",hookText.get()));
     }
+}
+```
+
+普通点击事件和需要拦截的方法以@SingleClick注解来区分，由于需要在SingleClickAspect类中拦截view 参数，获取点击时间，所以需要传递view参数
+
+```java
+	@Around("methodAnnotated()")//在连接点进行方法替换
+    public void aroundJoinPoint(ProceedingJoinPoint joinPoint) throws Throwable{
+        View view=null;
+        for (Object arg: joinPoint.getArgs()) {
+            if (arg instanceof View) view= ((View) arg);
+        }
+        if (view!=null){
+            ...
+        }
+    }
+```
+
+**activity_main.xml**
+
+```xml
+<LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                <Button
+                        android:id="@+id/hook_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="@{(v)->vm.onHookClick(v)}"
+                        android:text="hook"/>
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="@{vm.hookText}"/>
+            </LinearLayout>
 ```
 
 大功告成，当我们点击的时候在执行点击事件的同时会在控制台输出时间

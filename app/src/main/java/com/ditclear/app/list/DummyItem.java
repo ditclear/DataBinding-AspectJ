@@ -1,7 +1,7 @@
 package com.ditclear.app.list;
 
 import android.databinding.BaseObservable;
-import android.databinding.Bindable;
+import android.databinding.ObservableField;
 
 /**
  * 页面描述：假数据
@@ -12,19 +12,14 @@ import android.databinding.Bindable;
 public class DummyItem extends BaseObservable{
 
     public DummyItem(String content) {
-        this.content = content;
+
+        this.content.set(content);
     }
 
-    private String content;
+    public ObservableField<String> content =new ObservableField<String>();
 
-    @Bindable
-    public String getContent() {
-        return content;
-    }
 
-    public void setContent(String content) {
-        this.content = content;
-    }
+
 
 
 }
